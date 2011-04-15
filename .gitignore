@@ -1,2 +1,2 @@
 *.class #ignore all class file
-bin/    #ignore bin directory
+*/bin/*    #ignore bin directory
