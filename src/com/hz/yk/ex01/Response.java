@@ -39,6 +39,7 @@ public class Response {
 					output.write(bytes, 0, ch);
 					ch = fis.read(bytes, 0, BUFFER_SIZE);
 				}
+//				output.write("just to test ".getBytes());
 			} else {
 				// file not found
 				String errorMessage = "HTTP/1.1 404 File Not Found\r\n"
