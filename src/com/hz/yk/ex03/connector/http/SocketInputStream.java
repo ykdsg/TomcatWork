@@ -29,7 +29,7 @@ public class SocketInputStream extends InputStream {
 	private static final byte SP = (byte) ' ';
 
 	/**
-	 * HT.
+	 * HT. 横向跳格 (Ctrl-I)
 	 */
 	private static final byte HT = (byte) '\t';
 
