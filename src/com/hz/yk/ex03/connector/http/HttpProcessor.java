@@ -8,6 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 
 import com.hz.yk.ex03.connector.ServletProcessor;
+import com.hz.yk.ex03.connector.StaticResourceProcessor;
+import com.hz.yk.ex03.connector.http.HttpConnector;
+import com.hz.yk.ex03.connector.http.HttpRequest;
+import com.hz.yk.ex03.connector.http.HttpResponse;
+import com.hz.yk.ex03.connector.http.SocketInputStream;
 import com.hz.yk.naming.StringManager;
 import com.hz.yk.util.RequestUtil;
 
@@ -30,8 +35,8 @@ public class HttpProcessor {
 	/**
 	 * The string manager for this package.
 	 */
-	protected StringManager sm = StringManager
-			.getManager("ex03.pyrmont.connector.http");
+	protected StringManager sm = StringManager.getManager(this.getClass()
+			.getPackage().getName());
 
 	public void process(Socket socket) {
 		SocketInputStream input = null;

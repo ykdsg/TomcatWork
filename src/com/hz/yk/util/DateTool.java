@@ -80,8 +80,8 @@ import com.hz.yk.naming.StringManager;
  */
 public class DateTool {
 
-	private static StringManager sm = StringManager
-			.getManager("org.apache.catalina.util");
+	private static StringManager sm = StringManager.getManager(DateTool.class
+			.getPackage().getName());
 
 	/**
 	 * US locale - all HTTP dates are in english
