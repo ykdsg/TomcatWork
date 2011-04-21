@@ -13,5 +13,8 @@ public class StaticResourceProcessor {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 418b11be616716474d0002becda8994592bb6545
 }

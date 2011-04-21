@@ -9,10 +9,13 @@ import javax.servlet.http.Cookie;
 
 import com.hz.yk.ex03.connector.ServletProcessor;
 import com.hz.yk.ex03.connector.StaticResourceProcessor;
+<<<<<<< HEAD
 import com.hz.yk.ex03.connector.http.HttpConnector;
 import com.hz.yk.ex03.connector.http.HttpRequest;
 import com.hz.yk.ex03.connector.http.HttpResponse;
 import com.hz.yk.ex03.connector.http.SocketInputStream;
+=======
+>>>>>>> 418b11be616716474d0002becda8994592bb6545
 import com.hz.yk.naming.StringManager;
 import com.hz.yk.util.RequestUtil;
 
@@ -101,8 +104,8 @@ public class HttpProcessor {
 				if (header.valueEnd == 0) {
 					return;
 				} else {
-					throw new ServletException(sm
-							.getString("httpProcessor.parseHeaders.colon"));
+					throw new ServletException(
+							sm.getString("httpProcessor.parseHeaders.colon"));
 				}
 			}
 
@@ -117,9 +120,7 @@ public class HttpProcessor {
 						// Override anything requested in the URL
 						if (!request.isRequestedSessionIdFromCookie()) {
 							// Accept only the first session id cookie
-							request
-									.setRequestedSessionId(cookies[i]
-											.getValue());
+							request.setRequestedSessionId(cookies[i].getValue());
 							request.setRequestedSessionCookie(true);
 							request.setRequestedSessionURL(false);
 						}
@@ -132,8 +133,7 @@ public class HttpProcessor {
 					n = Integer.parseInt(value);
 				} catch (Exception e) {
 					throw new ServletException(
-							sm
-									.getString("httpProcessor.parseHeaders.contentLength"));
+							sm.getString("httpProcessor.parseHeaders.contentLength"));
 				}
 				request.setContentLength(n);
 			} else if (name.equals("content-type")) {
