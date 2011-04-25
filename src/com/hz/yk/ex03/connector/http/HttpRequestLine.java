@@ -1,17 +1,31 @@
 package com.hz.yk.ex03.connector.http;
 
+import java.io.IOException;
+
+import com.hz.yk.naming.StringManager;
+
 /**
  * HTTP request line enum type.
  * 
  * @author Remy Maucherat
  * @version $Revision: 1.6 $ $Date: 2002/03/18 07:15:40 $
- * @deprecated
  */
 
+/**
+ * 代表Http请求的第一行
+ */
 final class HttpRequestLine {
+	/**
+	 * The string manager for this package.
+	 */
+	protected static StringManager sm = StringManager
+			.getManager(Constants.Package);
 
 	// -------------------------------------------------------------- Constants
 
+	/**
+	 * 请求头char数组容量
+	 */
 	public static final int INITIAL_METHOD_SIZE = 8;
 	public static final int INITIAL_URI_SIZE = 64;
 	public static final int INITIAL_PROTOCOL_SIZE = 8;
@@ -111,6 +125,48 @@ final class HttpRequestLine {
 				return i;
 		}
 		return -1;
+	}
+
+	public void reSizeMethod(int readCount) throws IOException {
+		int maxRead = method.length;
+		if (readCount >= maxRead) {
+			if ((2 * maxRead) <= HttpRequestLine.MAX_METHOD_SIZE) {
+				char[] newBuffer = new char[2 * maxRead];
+				System.arraycopy(method, 0, newBuffer, 0, maxRead);
+				method = newBuffer;
+			} else {
+				throw new IOException(sm
+						.getString("requestStream.readline.toolong"));
+			}
+		}
+	}
+
+	public void reSizeUri(int readCount) throws IOException {
+		int maxRead = uri.length;
+		if (readCount >= maxRead) {
+			if ((2 * maxRead) <= HttpRequestLine.MAX_URI_SIZE) {
+				char[] newBuffer = new char[2 * maxRead];
+				System.arraycopy(uri, 0, newBuffer, 0, maxRead);
+				uri = newBuffer;
+			} else {
+				throw new IOException(sm
+						.getString("requestStream.readline.toolong"));
+			}
+		}
+	}
+
+	public void reSizeProtocol(int readCount) throws IOException {
+		int maxRead = protocol.length;
+		if (readCount >= maxRead) {
+			if ((2 * maxRead) <= HttpRequestLine.MAX_PROTOCOL_SIZE) {
+				char[] newBuffer = new char[2 * maxRead];
+				System.arraycopy(protocol, 0, newBuffer, 0, maxRead);
+				protocol = newBuffer;
+			} else {
+				throw new IOException(sm
+						.getString("requestStream.readline.toolong"));
+			}
+		}
 	}
 
 	// --------------------------------------------------------- Object Methods

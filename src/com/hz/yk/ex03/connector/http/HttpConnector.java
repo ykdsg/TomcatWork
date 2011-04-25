@@ -5,6 +5,13 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * 连接器，职责是创建一个服务器套接字用来等待前来的 HTTP请求
+ * 
+ * @author "yangk"
+ * @date 2011-4-19 下午03:00:15
+ * 
+ */
 public class HttpConnector implements Runnable {
 	boolean stopped;
 	private String scheme = "http";
@@ -15,10 +22,9 @@ public class HttpConnector implements Runnable {
 
 	public void run() {
 		ServerSocket serverSocket = null;
-		int port = 8080;
 		try {
-			serverSocket = new ServerSocket(port, 1, InetAddress
-					.getByName("127.0.0.1"));
+			serverSocket = new ServerSocket(Constants.PORT, 1, InetAddress
+					.getByName("192.168.0.92"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);

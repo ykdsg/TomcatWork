@@ -31,8 +31,8 @@ public class HttpProcessor {
 	/**
 	 * The string manager for this package.
 	 */
-	protected StringManager sm = StringManager
-			.getManager(this.getClass().getPackage().getName());
+	protected StringManager sm = StringManager.getManager(this.getClass()
+			.getPackage().getName());
 
 	public void process(Socket socket) {
 		SocketInputStream input = null;
@@ -97,8 +97,8 @@ public class HttpProcessor {
 				if (header.valueEnd == 0) {
 					return;
 				} else {
-					throw new ServletException(
-							sm.getString("httpProcessor.parseHeaders.colon"));
+					throw new ServletException(sm
+							.getString("httpProcessor.parseHeaders.colon"));
 				}
 			}
 
@@ -113,7 +113,9 @@ public class HttpProcessor {
 						// Override anything requested in the URL
 						if (!request.isRequestedSessionIdFromCookie()) {
 							// Accept only the first session id cookie
-							request.setRequestedSessionId(cookies[i].getValue());
+							request
+									.setRequestedSessionId(cookies[i]
+											.getValue());
 							request.setRequestedSessionCookie(true);
 							request.setRequestedSessionURL(false);
 						}
@@ -126,7 +128,8 @@ public class HttpProcessor {
 					n = Integer.parseInt(value);
 				} catch (Exception e) {
 					throw new ServletException(
-							sm.getString("httpProcessor.parseHeaders.contentLength"));
+							sm
+									.getString("httpProcessor.parseHeaders.contentLength"));
 				}
 				request.setContentLength(n);
 			} else if (name.equals("content-type")) {

@@ -3,6 +3,7 @@ package com.hz.yk.ex03.connector.http;
 import java.io.File;
 
 public final class Constants {
+	public static final int PORT = 8088;
 	public static final String WEB_ROOT = System.getProperty("user.dir")
 			+ File.separator + "webroot";
 	public static final String Package = Constants.class.getPackage().getName();
