@@ -32,7 +32,7 @@ public class HttpProcessor {
 	 * The string manager for this package.
 	 */
 	protected StringManager sm = StringManager
-			.getManager("ex03.pyrmont.connector.http");
+			.getManager(this.getClass().getPackage().getName());
 
 	public void process(Socket socket) {
 		SocketInputStream input = null;
